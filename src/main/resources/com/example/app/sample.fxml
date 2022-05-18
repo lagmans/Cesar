@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="466.0" prefWidth="559.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="welcomeText" />
+   <AnchorPane prefHeight="446.0" prefWidth="519.0">
+      <children>
+         <Button fx:id="encryptionButton" defaultButton="true" layoutX="105.0" layoutY="67.0" mnemonicParsing="false" onAction="#ClickEncryptButton" text="EncryptFile" />
+         <Button fx:id="decryptionButton" defaultButton="true" layoutX="105.0" layoutY="258.0" mnemonicParsing="false" onAction="#ClickDecryptButton" text="DecryptFile" />
+         <TextField fx:id="encryptionText" layoutX="20.0" layoutY="35.0" prefHeight="25.0" prefWidth="222.0" />
+         <TextField fx:id="decryptionText" layoutX="20.0" layoutY="218.0" prefHeight="25.0" prefWidth="222.0" />
+         <TextArea fx:id="DecryptArea" layoutX="286.0" layoutY="29.0" prefHeight="148.0" prefWidth="200.0" />
+         <TextArea fx:id="EncryptArea" layoutX="286.0" layoutY="218.0" prefHeight="148.0" prefWidth="200.0" />
+      </children>
+   </AnchorPane>
+</VBox>
