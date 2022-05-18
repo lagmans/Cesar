@@ -64,22 +64,31 @@ public class HelloController {
         if (textEncrypt==null){
             return;
         }
+        int count = 3;
         char[] text = textEncrypt.toCharArray();
+
+            text = decryptionByValue(text,count);
+
+        textEncrypt = String.copyValueOf(decryptionByValue(text,3));
+        EncryptArea.setText(textEncrypt);
+    }
+
+    private char[] decryptionByValue (char[] text, int value){
+
         for (int i = 0; i < text.length; i++) {
             for (int j = 0; j < rusAlphabet.length; j++) {
                 if (text[i]==rusAlphabet[j]){
-                    if ((j-3)>=0) {
-                        text[i] = rusAlphabet[j-3];
+                    if ((j-value)>=0) {
+                        text[i] = rusAlphabet[j-value];
                         break;
                     } else {
-                        text[i] = rusAlphabet[j - 3 + rusAlphabet.length-1];
+                        text[i] = rusAlphabet[j - value + rusAlphabet.length-1];
                     }
 
                 }
             }
         }
-        textEncrypt = String.copyValueOf(text);
-        EncryptArea.setText(textEncrypt);
+        return text;
     }
 
     private String readFile(String fileLocation){
