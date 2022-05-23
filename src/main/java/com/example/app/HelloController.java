@@ -2,13 +2,10 @@ package com.example.app;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -20,13 +17,13 @@ public class HelloController {
     @FXML
     TextField encryptionText;
     @FXML
-    TextArea DecryptArea;
+    TextArea decryptArea;
 
     @FXML
     TextField decryptionText;
 
     @FXML
-    TextArea EncryptArea;
+    TextArea encryptArea;
 
     final char[] rusAlphabet = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л',
             'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ',
@@ -55,25 +52,28 @@ public class HelloController {
             }
         }
         textEncrypt = String.copyValueOf(text);
-        DecryptArea.setText(textEncrypt);
+        decryptArea.setText(textEncrypt);
     }
 
     public void ClickDecryptButton (){
 
         String textEncrypt = readFile(decryptionText.getText());
+
         if (textEncrypt==null){
             return;
         }
-        int count = 3;
         char[] text = textEncrypt.toCharArray();
 
-            text = decryptionByValue(text,count);
+        for (int i = 0; i < rusAlphabet.length; i++) {
+            text = decryptionShift(text,i);
+        encryptArea.appendText(String.copyValueOf(text)+"\n");
 
-        textEncrypt = String.copyValueOf(decryptionByValue(text,3));
-        EncryptArea.setText(textEncrypt);
+        }
+
+
     }
 
-    private char[] decryptionByValue (char[] text, int value){
+    private char[] decryptionShift (char[] text, int value){
 
         for (int i = 0; i < text.length; i++) {
             for (int j = 0; j < rusAlphabet.length; j++) {
