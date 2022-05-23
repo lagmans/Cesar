@@ -66,7 +66,11 @@ public class HelloController {
 
         for (int i = 0; i < rusAlphabet.length; i++) {
             text = decryptionShift(text,i);
-        encryptArea.appendText(String.copyValueOf(text)+"\n");
+
+            if (String.valueOf(text).contains(" ")&&(String.valueOf(text).endsWith(".")
+            ||String.valueOf(text).endsWith("!")||String.valueOf(text).endsWith("?"))){
+                encryptArea.appendText(String.valueOf(text)+"\n");
+            }
 
         }
 
