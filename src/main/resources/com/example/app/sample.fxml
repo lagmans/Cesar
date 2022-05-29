@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="534.0" prefWidth="698.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.HelloController">
+<VBox alignment="CENTER" prefHeight="534.0" prefWidth="877.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -16,12 +16,13 @@
     <Label fx:id="welcomeText" />
    <AnchorPane prefHeight="481.0" prefWidth="658.0">
       <children>
-         <Button fx:id="encryptionButton" defaultButton="true" layoutX="113.0" layoutY="77.0" mnemonicParsing="false" onAction="#ClickEncryptButton" text="EncryptFile" />
+         <Button fx:id="encryptionButton" defaultButton="true" layoutX="96.0" layoutY="127.0" mnemonicParsing="false" onAction="#ClickEncryptButton" prefHeight="25.0" prefWidth="108.0" text="EncryptFile" />
          <Button fx:id="decryptionButton" defaultButton="true" layoutX="104.0" layoutY="282.0" mnemonicParsing="false" onAction="#ClickDecryptButton" text="DecryptFile" />
-         <TextField fx:id="encryptionText" layoutX="39.0" layoutY="35.0" prefHeight="25.0" prefWidth="222.0" />
-         <TextField fx:id="decryptionText" layoutX="31.0" layoutY="244.0" prefHeight="25.0" prefWidth="222.0" />
-         <TextArea fx:id="decryptArea" layoutX="288.0" layoutY="35.0" prefHeight="184.0" prefWidth="353.0" />
-         <TextArea fx:id="encryptArea" layoutX="288.0" layoutY="244.0" prefHeight="184.0" prefWidth="353.0" />
+         <TextField fx:id="encryptionText" layoutX="39.0" layoutY="35.0" prefHeight="25.0" prefWidth="222.0" promptText="Укажите путь к файлу" />
+         <TextField fx:id="decryptionText" layoutX="31.0" layoutY="244.0" prefHeight="25.0" prefWidth="222.0" promptText="Укажите путь к файлу" />
+         <TextArea fx:id="decryptArea" layoutX="288.0" layoutY="35.0" prefHeight="184.0" prefWidth="513.0" />
+         <TextArea fx:id="encryptArea" layoutX="288.0" layoutY="244.0" prefHeight="184.0" prefWidth="513.0" />
+         <TextField fx:id="TextShift" layoutX="39.0" layoutY="80.0" prefHeight="25.0" prefWidth="222.0" promptText="Укажите сдвиг текста" />
       </children>
    </AnchorPane>
 </VBox>

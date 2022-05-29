@@ -18,6 +18,8 @@ public class HelloController {
     TextField encryptionText;
     @FXML
     TextArea decryptArea;
+    @FXML
+    TextField TextShift;
 
     @FXML
     TextField decryptionText;
@@ -25,7 +27,7 @@ public class HelloController {
     @FXML
     TextArea encryptArea;
 
-    final char[] rusAlphabet = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л',
+    final static char[] rusAlphabet = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л',
             'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ',
             'э', 'ю', 'я','А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М',
             'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ы', 'Ъ', 'Э',
@@ -34,6 +36,7 @@ public class HelloController {
 
     public void ClickEncryptButton(){
         String textEncrypt =readFile(encryptionText.getText());
+        int shift  = Integer.parseInt(TextShift.getText());
         if (textEncrypt==null){
             return;
         }
@@ -41,11 +44,11 @@ public class HelloController {
         for (int i = 0; i < text.length; i++) {
             for (int j = 0; j < rusAlphabet.length; j++) {
                 if (text[i]==rusAlphabet[j]){
-                    if ((j+3)<rusAlphabet.length) {
-                        text[i] = rusAlphabet[j+3];
+                    if ((j+shift)<rusAlphabet.length) {
+                        text[i] = rusAlphabet[j+shift];
                         break;
                     } else {
-                        text[i] = rusAlphabet[j+3 - rusAlphabet.length];
+                        text[i] = rusAlphabet[j+shift - rusAlphabet.length];
                     }
 
                 }
@@ -64,29 +67,30 @@ public class HelloController {
         }
         char[] text = textEncrypt.toCharArray();
 
-        for (int i = 0; i < rusAlphabet.length; i++) {
-            text = decryptionShift(text,i);
+        for (int i = 1; i < rusAlphabet.length; i++) {
+            text = decryptionShift(text);
 
             if (String.valueOf(text).contains(" ")&&(String.valueOf(text).endsWith(".")
             ||String.valueOf(text).endsWith("!")||String.valueOf(text).endsWith("?"))){
                 encryptArea.appendText(String.valueOf(text)+"\n");
             }
 
-        }
 
+        }
 
     }
 
-    private char[] decryptionShift (char[] text, int value){
+    private char[] decryptionShift (char[] text){
 
         for (int i = 0; i < text.length; i++) {
             for (int j = 0; j < rusAlphabet.length; j++) {
                 if (text[i]==rusAlphabet[j]){
-                    if ((j-value)>=0) {
-                        text[i] = rusAlphabet[j-value];
-                        break;
+                    if ((j-1)>=0) {
+                        text[i] = rusAlphabet[j-1];
+
                     } else {
-                        text[i] = rusAlphabet[j - value + rusAlphabet.length-1];
+                        text[i] = rusAlphabet[rusAlphabet.length-1+j];
+                        break;
                     }
 
                 }
